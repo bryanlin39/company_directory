@@ -1,0 +1,14 @@
+<h3>All Projects</h3>
+
+<ul>
+  <% @projects.each do |project| %>
+  <li><%= project.name %></li>
+  <% end %>
+</ul>
+
+<h3>Add a New Project</h3>
+<form action='/projects' method='post'>
+  <label for='project_name'>Project Name</label>
+  <input type='text' name='project_name'>
+  <button type='submit'>Add</button>
+</form>

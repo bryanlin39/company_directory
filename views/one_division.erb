@@ -1,0 +1,22 @@
+<h3><%= @division.name %></h3>
+
+<h3>Active Employees</h3>
+<form action="/divisions/<%= @division.id %>/remove" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <% @division.employees.each do |employee| %>
+    <input type='checkbox' name='employee_ids[]' value='<%=employee.id%>'><%= employee.name %>
+  <% end %>
+  <button type="submit" name="button">Remove</button>
+</form>
+
+
+<h3>Available Employees</h3>
+<form action="/divisions/<%= @division.id %>/add" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <% @available_employees.each do |employee| %>
+    <input type='checkbox' name='employee_ids[]' value='<%=employee.id%>'><%= employee.name %>
+  <% end %>
+  <button type="submit" name="button">Add</button>  
+</form>
+
+</ul>

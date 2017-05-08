@@ -1,0 +1,19 @@
+<h2><%= @employee.name %></h2>
+
+<h3><%= @employee.name %>'s Projects</h3>
+<form action='/employees/<%= @employee.id %>/remove' method='post'>
+  <input type='hidden' name='_method' value='patch'>
+  <% @employee.projects.each do |project| %>
+    <input type='checkbox' name='project_name[]' value='<%= project.id %>'><%= project.name %>
+  <% end %>
+  <button type='submit'>Remove Project</button>
+</form>
+
+<h3>All Available Projects</h3>
+<form action='/employees/<%= @employee.id %>/add' method='post'>
+  <input type='hidden' name='_method' value='patch'>
+  <% @available_projects.each do |project| %>
+    <input type='checkbox' name='project_name[]' value='<%= project.id %>'><%= project.name %>
+  <% end %>
+  <button type='submit'>Add Project</button>
+</form>
